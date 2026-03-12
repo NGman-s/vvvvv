@@ -1,21 +1,57 @@
 import React from 'react';
+import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight, MousePointer2, Github, Twitter, Linkedin } from "lucide-react";
+import { ArrowRight, MousePointer2, Github } from "lucide-react";
+
+const heroIllustrations = {
+  left: {
+    src: "/ScreenShot_2026-03-12_181602_111.png",
+    alt: "VisionMark playful illustration collage on the left",
+  },
+  right: {
+    src: "/ScreenShot_2026-03-12_181613_256.png",
+    alt: "VisionMark playful illustration collage on the right",
+  },
+};
+
+const problemCards = [
+  {
+    title: "Engineering bottleneck",
+    desc: "Every time the business needs a change to the app, it creates a ticket and puts pressure on the dev team.",
+    image: "/ScreenShot_2026-03-12_181621_452.png",
+    alt: "Red rectangular character illustration",
+    imageClassName: "w-44",
+  },
+  {
+    title: "Context switching",
+    desc: "Engineers spend hours building simple UI updates or tweaking configs instead of focusing on core architecture.",
+    image: "/ScreenShot_2026-03-12_181626_614.png",
+    alt: "Blue square character illustration",
+    imageClassName: "w-28",
+  },
+  {
+    title: "Risk of mistakes",
+    desc: "Non-engineers trying to edit code outside their comfort zone often leads to broken builds and bugs in production.",
+    image: "/ScreenShot_2026-03-12_181631_925.png",
+    alt: "Orange triangle character illustration",
+    imageClassName: "w-32",
+  },
+];
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-green-300">
+    <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-green-300">
       
       {/* 1. Header */}
-      <header className="sticky top-0 z-50 bg-slate-50/80 backdrop-blur-md border-b-2 border-transparent transition-all duration-300 w-full">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white">
+        <div className="mx-auto flex h-18 max-w-5xl items-center justify-between px-6">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-black text-2xl tracking-tighter">Sparkles</span>
+            <span className="font-serif font-black text-2xl tracking-tighter">VisionMark</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 font-bold text-sm">
             <a href="#problem" className="hover:text-green-600 transition-colors">Problem</a>
@@ -23,7 +59,6 @@ export default function LandingPage() {
             <a href="#faq" className="hover:text-green-600 transition-colors">FAQ</a>
           </nav>
           <div className="flex items-center gap-6">
-            <a href="#signin" className="hidden md:block text-sm font-bold hover:text-green-600 transition-colors">Sign in</a>
             <a href="#getstarted" className="bg-black text-white px-5 py-2.5 rounded-2xl text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
               Get started
             </a>
@@ -32,7 +67,7 @@ export default function LandingPage() {
       </header>
 
       {/* 2. Hero Section */}
-      <section className="relative pt-20 pb-32 px-6 overflow-hidden">
+      <section className="relative overflow-hidden bg-white px-6 pt-20 pb-32">
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <div className="inline-flex items-center gap-2 border-2 border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-bold mb-8 shadow-sm">
             <span className="bg-orange-500 text-white px-1.5 py-0.5 rounded text-[10px]">Y</span>
@@ -54,16 +89,30 @@ export default function LandingPage() {
         </div>
 
         {/* Illustrations format */}
-        <div className="absolute top-24 left-10 md:left-[10%] w-32 h-32 hidden md:block animate-[bounce_3s_infinite]">
-          <img src="/placeholder.png" alt="illustration-left" className="w-full h-full object-contain" />
+        <div className="pointer-events-none absolute -left-16 -top-2 z-0 hidden h-52 w-48 md:block lg:-left-20 lg:top-0 lg:h-72 lg:w-64">
+          <Image
+            src={heroIllustrations.left.src}
+            alt={heroIllustrations.left.alt}
+            fill
+            priority
+            className="object-contain object-left-top"
+            sizes="(min-width: 1024px) 16rem, 12rem"
+          />
         </div>
-        <div className="absolute top-48 right-10 md:right-[10%] w-40 h-40 hidden md:block animate-[bounce_4s_infinite]">
-          <img src="/placeholder.png" alt="illustration-right" className="w-full h-full object-contain" />
+        <div className="pointer-events-none absolute bottom-0 right-[-3.75rem] z-0 hidden h-56 w-52 md:block lg:right-[-4.5rem] lg:h-80 lg:w-72">
+          <Image
+            src={heroIllustrations.right.src}
+            alt={heroIllustrations.right.alt}
+            fill
+            priority
+            className="object-contain object-right-bottom"
+            sizes="(min-width: 1024px) 18rem, 13rem"
+          />
         </div>
       </section>
 
       {/* 3. The Problem */}
-      <section id="problem" className="py-24 px-6 bg-slate-50">
+      <section id="problem" className="bg-[#f1f0ee] px-6 py-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-black mb-4">The problem</h2>
@@ -71,15 +120,18 @@ export default function LandingPage() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {[ 
-              { title: "Engineering bottleneck", desc: "Every time the business needs a change to the app, it creates a ticket and puts pressure on the dev team." },
-              { title: "Context switching", desc: "Engineers spend hours building simple UI updates or tweaking configs instead of focusing on core architecture." },
-              { title: "Risk of mistakes", desc: "Non-engineers trying to edit code outside their comfort zone often leads to broken builds and bugs in production." }
-            ].map((item, i) => (
+            {problemCards.map((item, i) => (
               <div key={i} className="bg-white border-2 border-black rounded-3xl p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1">
                 <div className="h-40 mb-6 flex items-center justify-center bg-slate-100 rounded-xl border-2 border-transparent">
-                   {/* 预留给问题卡片的插图 */}
-                   <img src="/placeholder.png" alt={`problem-${i+1}`} className="h-24 object-contain drop-shadow-md" />
+                  <div className={`relative h-24 ${item.imageClassName}`}>
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      className="object-contain drop-shadow-md"
+                      sizes="176px"
+                    />
+                  </div>
                 </div>
                 <div className="font-serif font-black text-3xl mb-4 border-b-2 border-black pb-4">{i + 1}.</div>
                 <h3 className="font-bold text-xl mb-3">{item.title}</h3>
@@ -95,19 +147,19 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-serif font-black mb-6">The solution</h2>
-            <p className="text-lg text-slate-500 font-medium mb-10">Sparkles gives your team a magical canvas to build and edit the app visually, safely, and collaboratively.</p>
+            <p className="text-lg text-slate-500 font-medium mb-10">VisionMark gives your team a magical canvas to build and edit the app visually, safely, and collaboratively.</p>
             
             <Accordion defaultValue={["item-1"]} className="w-full">
               <AccordionItem value="item-1" className="border-b-2 border-black">
                 <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5">Connect your repository</AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed text-base font-medium pb-6">
-                  Easily link your GitHub repository with one click. Sparkles automatically understands your code, design system, and components using advanced AI parsing. No complex setup or migration scripts needed.
+                  Easily link your GitHub repository with one click. VisionMark automatically understands your code, design system, and components using advanced AI parsing. No complex setup or migration scripts needed.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2" className="border-b-2 border-black">
-                <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5">Talk to Sparkles</AccordionTrigger>
+                <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5">Talk to VisionMark</AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed text-base font-medium pb-6">
-                  Use natural language to tell Sparkles what you want to build or change. It instantly generates the corresponding React components.
+                  Use natural language to tell VisionMark what you want to build or change. It instantly generates the corresponding React components.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3" className="border-b-2 border-black">
@@ -156,19 +208,24 @@ export default function LandingPage() {
       <section id="faq" className="py-24 px-6 bg-slate-50">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <div className="order-2 md:order-1 relative w-full aspect-square md:aspect-auto md:h-[600px]">
-             {/* 预留给大型怪兽网格拼图的占位 */}
-             <img src="/placeholder.png" alt="FAQ Monster Grid" className="absolute inset-0 w-full h-full object-contain drop-shadow-xl" />
+            <Image
+              src="/ScreenShot_2026-03-12_181656_743.png"
+              alt="VisionMark character grid collage"
+              fill
+              className="absolute inset-0 object-contain drop-shadow-xl"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
           </div>
           
           <div className="order-1 md:order-2">
             <h2 className="text-4xl md:text-5xl font-serif font-black mb-4">Frequently asked questions</h2>
-            <p className="text-lg text-slate-500 font-medium mb-10">Everything you need to know about Sparkles.</p>
+            <p className="text-lg text-slate-500 font-medium mb-10">Everything you need to know about VisionMark.</p>
             
             <Accordion className="w-full">
               <AccordionItem value="faq-1" className="border-b-2 border-black">
-                <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5 text-left">What is Sparkles?</AccordionTrigger>
+                <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5 text-left">What is VisionMark?</AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed text-base font-medium pb-6">
-                  Sparkles is an AI-powered UI editor that allows non-engineers to make visual changes to your application and generates clean React/Tailwind code directly to your codebase.
+                  VisionMark is an AI-powered UI editor that allows non-engineers to make visual changes to your application and generates clean React/Tailwind code directly to your codebase.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-2" className="border-b-2 border-black">
@@ -180,7 +237,7 @@ export default function LandingPage() {
               <AccordionItem value="faq-3" className="border-b-2 border-black">
                 <AccordionTrigger className="font-bold text-xl hover:text-green-600 transition-colors py-5 text-left">Is my data secure?</AccordionTrigger>
                 <AccordionContent className="text-slate-600 leading-relaxed text-base font-medium pb-6">
-                  We take security very seriously. We use OAuth with limited scopes, and we don't store your proprietary source code on our servers beyond what's needed for the active editing session.
+                  We take security very seriously. We use OAuth with limited scopes, and we don&apos;t store your proprietary source code on our servers beyond what&apos;s needed for the active editing session.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="faq-4" className="border-b-2 border-black border-b-0">
@@ -218,22 +275,19 @@ export default function LandingPage() {
         <div className="bg-[#4ADE80] text-black border-t-2 border-black font-semibold">
           <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-8">
-              <span className="font-serif font-black text-2xl tracking-tighter">Sparkles</span>
+              <span className="font-serif font-black text-2xl tracking-tighter">VisionMark</span>
               <div className="hidden sm:flex gap-6 text-sm font-bold">
                 <a href="#problem" className="hover:underline underline-offset-4">Problem</a>
                 <a href="#solution" className="hover:underline underline-offset-4">Solution</a>
                 <a href="#faq" className="hover:underline underline-offset-4">FAQ</a>
-                <a href="#" className="hover:underline underline-offset-4">Pricing</a>
                 <a href="#" className="hover:underline underline-offset-4">Terms</a>
               </div>
             </div>
             
             <div className="flex items-center gap-8">
-              <span className="text-sm font-bold">© 2024 Sparkles, Inc.</span>
+              <span className="text-sm font-bold">© 2024 VisionMark, Inc.</span>
               <div className="flex gap-4">
-                <a href="#" className="hover:scale-110 transition-transform"><Twitter className="w-5 h-5 fill-current" /></a>
                 <a href="#" className="hover:scale-110 transition-transform"><Github className="w-5 h-5 fill-current" /></a>
-                <a href="#" className="hover:scale-110 transition-transform"><Linkedin className="w-5 h-5 fill-current" /></a>
               </div>
             </div>
           </div>

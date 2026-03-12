@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sparkles | Make everyone on your team an engineer",
-  description: "Sparkles gives your team a magical canvas to build and edit the app visually, safely, and collaboratively.",
+  title: "VisionMark | Make everyone on your team an engineer",
+  description: "VisionMark gives your team a magical canvas to build and edit the app visually, safely, and collaboratively.",
 };
 
 export default function RootLayout({
