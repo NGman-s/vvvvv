@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VisionMark | Make everyone on your team an engineer",
-  description: "VisionMark gives your team a magical canvas to build and edit the app visually, safely, and collaboratively.",
+  title: "VisionMark | 视频理解 / AI 辅助插件",
+  description: "VisionMark 是一个通过理解视频内容来辅助用户观看视频的综合 AI 插件。",
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
