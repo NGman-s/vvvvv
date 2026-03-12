@@ -44,6 +44,8 @@ const problemCards = [
 ];
 
 export default function LandingPage() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-green-300">
       
@@ -69,11 +71,6 @@ export default function LandingPage() {
       {/* 2. Hero Section */}
       <section className="relative overflow-hidden bg-white px-6 pt-20 pb-32">
         <div className="max-w-6xl mx-auto relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 border-2 border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-bold mb-8 shadow-sm">
-            <span className="bg-orange-500 text-white px-1.5 py-0.5 rounded text-[10px]">Y</span>
-            Backed by Y Combinator
-          </div>
-          
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-[1.05] tracking-tight max-w-4xl mx-auto">
             Make everyone on your team an engineer
           </h1>
@@ -285,7 +282,7 @@ export default function LandingPage() {
             </div>
             
             <div className="flex items-center gap-8">
-              <span className="text-sm font-bold">© 2024 VisionMark, Inc.</span>
+              <span className="text-sm font-bold">© {currentYear} VisionMark, Inc.</span>
               <div className="flex gap-4">
                 <a href="#" className="hover:scale-110 transition-transform"><Github className="w-5 h-5 fill-current" /></a>
               </div>
